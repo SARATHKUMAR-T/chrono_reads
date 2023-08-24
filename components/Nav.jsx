@@ -17,7 +17,7 @@ function Nav() {
 
   const dispatch = useDispatch();
   return (
-    <nav className="fixed top-0 z-50 bg-green-600 flex-between w-full mb-16 h-14 px-6">
+    <nav className="fixed top-0 z-50 bg-green-600 flex-between w-full mb-16 h-14 px-12">
       <Link href="/" className=" flex gap-2 flex-center">
         <Image
           alt="Prompotopia logo"

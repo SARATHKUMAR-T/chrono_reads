@@ -17,22 +17,31 @@ function Form({ type, post, setPost, submitting, handleSubmit }) {
       >
         <label>
           <span className="font-satoshi font-semibold text-base text-gray-700">
-            Your AI Prompt
+            Book Name{" "}
           </span>
-          <textarea
-            value={post.prompt}
-            placeholder="Write Your Prompt Here"
+          <input
+            value={post.bookName}
+            placeholder="i.e:Atomic Habits"
             required
-            className="form_textarea"
-            onChange={e => setPost({ ...post, prompt: e.target.value })}
+            className="form_input"
+            onChange={e => setPost({ ...post, bookName: e.target.value })}
           />
         </label>
         <label>
           <span className="font-satoshi font-semibold text-base text-gray-700">
-            Tag{" "}
-            <span className="font-normal">
-              (#product, #webdevelopment, #idea)
-            </span>
+            Authour{" "}
+          </span>
+          <input
+            value={post.authour}
+            placeholder="Jhone doe"
+            required
+            className="form_input"
+            onChange={e => setPost({ ...post, authour: e.target.value })}
+          />
+        </label>
+        <label>
+          <span className="font-satoshi font-semibold text-base text-gray-700">
+            Tag <span className="font-normal">(#novels, #selfdevelopment)</span>
           </span>
           <input
             value={post.tag}
@@ -42,11 +51,28 @@ function Form({ type, post, setPost, submitting, handleSubmit }) {
             onChange={e => setPost({ ...post, tag: e.target.value })}
           />
         </label>
+        <label>
+          <span className="font-satoshi font-semibold text-base text-gray-700">
+            Your Blog
+          </span>
+          <textarea
+            value={post.post}
+            placeholder="Write Your Blog Here"
+            required
+            className="form_textarea"
+            onChange={e => setPost({ ...post, post: e.target.value })}
+          />
+        </label>
+
         <div className="flex-end mx-3 mb-5 gap-4">
-          <Link href="/" className="text-gray-500 text-sm">
+          <Link href="/post" className="text-gray-500 text-sm">
             Cancel
           </Link>
-          <button type="submit" className="px-5 py-1.5 text-sm bg-primary-orange rounded-full text-white" disabled={submitting}>
+          <button
+            type="submit"
+            className="px-5 py-1.5 text-sm bg-primary-orange rounded-full text-white"
+            disabled={submitting}
+          >
             {submitting ? `${type}...` : type}
           </button>
         </div>

@@ -1,6 +1,6 @@
 import Feed from "@components/Feed";
 
-function CreatePost() {
+function Post() {
   return (
     <section className="mt-16 min-h-screen w-full flex-center flex-col ">
       <h1 className="head_text text-center">
@@ -21,4 +21,4 @@ function CreatePost() {
   );
 }
 
-export default CreatePost;
+export default Post;

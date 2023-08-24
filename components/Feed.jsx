@@ -16,6 +16,7 @@ const PromptCardList = ({ data, handleTagClick }) => {
 function Feed() {
   const [searchText, setSearchText] = useState("");
   const [posts, setPosts] = useState([]);
+  console.log(posts);
 
   const handleSearchChange = e => {
     e.preventDefault();
@@ -23,7 +24,7 @@ function Feed() {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const response = await fetch("/api/prompt");
+      const response = await fetch("/api/post");
       const data = await response.json();
       setPosts(data);
     };

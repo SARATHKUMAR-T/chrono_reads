@@ -11,6 +11,7 @@ import { setUser } from "@redux/UserSlice";
 
 function LoginModal() {
   const router = useRouter();
+  const isLoading = false;
 
   const dispatch = useDispatch();
 
@@ -24,30 +25,48 @@ function LoginModal() {
 
   // Form submission
   async function onSubmit(data) {
-    mutate(data);
-  }
+    // mutate(data);
 
-  const { isLoading, mutate } = useMutation(
-    data => axios.post("api/login", data),
-    {
-      onSuccess: handleSuccess,
-      onError: handleError,
+    try {
+      const res = await signIn("credentials", {
+        ...data,
+        redirect: false,
+      });
+      console.log(res);
+
+      if (res.error) {
+        toast.error("Invalid Credentials");
+        return;
+      }
+      toast.success("Logged in Successfully");
+      dispatch(toggleLogin());
+      router.replace("/post");
+    } catch (error) {
+      console.log(error);
     }
-  );
-
-  function handleSuccess(responseData) {
-    toast.success(responseData.data.message);
-    localStorage.setItem("token", responseData.data.token);
-    reset();
-    console.log(responseData);
-    router.push("/post");
-    dispatch(setUser(responseData.data.user));
-    dispatch(toggleLogin());
   }
 
-  function handleError(errorData) {
-    toast.error(errorData.response.data.message);
-  }
+  // const { isLoading, mutate } = useMutation(
+  //   data => axios.post("api/login", data),
+  //   {
+  //     onSuccess: handleSuccess,
+  //     onError: handleError,
+  //   }
+  // );
+
+  // function handleSuccess(responseData) {
+  //   toast.success(responseData.data.message);
+  //   localStorage.setItem("token", responseData.data.token);
+  //   reset();
+  //   console.log(responseData);
+  //   router.push("/post");
+  //   dispatch(setUser(responseData.data.user));
+  //   dispatch(toggleLogin());
+  // }
+
+  // function handleError(errorData) {
+  //   toast.error(errorData.response.data.message);
+  // }
 
   // handling signup
   function handleSignup() {

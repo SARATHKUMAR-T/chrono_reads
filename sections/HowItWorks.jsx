@@ -1,10 +1,14 @@
 "use client";
 
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { FaQuoteLeft } from "react-icons/fa6";
 import sara from "../public/Assets/images/c2.jpg";
 import book from "../public/Assets/images/bookcover.jpg";
 import { TitleText, TypingText } from "@components/CustomTexts";
+import { fadeIn } from "@utils/motion";
+import StartSteps from "@components/StartSteps";
+import { startingFeatures } from "@constants/book1";
 
 const GetStarted = () => (
   <section className="min-h-screen py-12 px-4 ">
@@ -34,12 +38,18 @@ const GetStarted = () => (
         <Image src={book} className="w-full h-full object-contain" alt="book" />
       </div>
       <div className="flex-1 p-3">
-        32
-        <TypingText
-          title="| how it works"
-          textstyles="text center capitalize"
-        />
-        <TitleText title="Just get started in few clicks " textstyles="text-start capitalize"/>
+        <motion.div
+          variants={fadeIn("left", "tween", 0.2, 1)}
+          className="flex-[0.75] flex justify-center flex-col"
+        >
+          <TypingText title="| How Metaversus Works" />
+          <TitleText title={<>Get Started with just few clicks</>} />
+          <div className="mt-[31px] flex flex-col max-w-[370px] gap-[24px]">
+            {startingFeatures.map((feature, index) => (
+              <StartSteps key={feature} text={feature} number={index + 1} />
+            ))}
+          </div>
+        </motion.div>
       </div>
     </div>
   </section>

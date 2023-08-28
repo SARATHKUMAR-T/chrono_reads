@@ -1,5 +1,5 @@
 "use client";
-import Contact from "@components/Contact";
+import Contact from "@sections/Contact";
 import Hero from "@sections/Hero";
 import HowItWorks from "@sections/HowItWorks";
 import PasswordModal from "@components/PasswordModal";

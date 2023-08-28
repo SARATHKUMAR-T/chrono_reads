@@ -23,13 +23,10 @@ export default function RootLayout({ children }) {
           <ReactQueryDevtools initialIsOpen={false} />
           <Provider store={store}>
             <AuthProvider>
-              <div className="main">
-                <div className="gradient" />
-              </div>
-              <div className="app">
+              <>
                 <Nav />
                 {children}
-              </div>
+              </>
               <Toaster
                 position="top-center"
                 gutter={12}

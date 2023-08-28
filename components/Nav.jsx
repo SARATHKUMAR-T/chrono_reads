@@ -1,6 +1,6 @@
 "use client";
 import { IoPersonCircleOutline } from "react-icons/io5";
-import { toggleLogin } from "@redux/UserForm";
+import { toggleLogin, toggleSignup } from "@redux/UserForm";
 import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -17,16 +17,8 @@ function Nav() {
 
   const dispatch = useDispatch();
   return (
-    <nav className="fixed top-0 z-50 bg-green-600 flex-between w-full mb-16 h-14 px-12">
-      <Link href="/" className=" flex gap-2 flex-center">
-        <Image
-          alt="Prompotopia logo"
-          width={30}
-          height={30}
-          className="object-contain"
-        />
-        <p className="logo_text">Chorono Reads</p>
-      </Link>
+    <nav className="fixed  top-0 z-50  w-full  h-14 px-12">
+      {/* <p className="logo_text">Chorono Reads</p> */}
       {/* <button
         onClick={() => {
           router.push("/");
@@ -35,19 +27,30 @@ function Nav() {
         Chrono reads
       </button> */}
       {/* desktop navigation */}
-      <div className="hidden sm:flex">
+      <div className="hidden sm:flex  ">
         {session === null ? (
-          <div className="flex gap-3 md:gap-5">
-            <Link href="/">How it works</Link>
-            <Link href="/">testimonails</Link>
-            <Link href="/">about</Link>
-            <Link href="/">contact</Link>
+          <div className="flex w-full items-center justify-between capitalize gap-3 md:gap-5">
             <button
-              className="bg-blue-600 text-black"
-              onClick={() => dispatch(toggleLogin())}
+              className="p-4 font-marienda text-xl font-bold text-teal-500 "
+              onClick={() => {
+                router.push("/");
+                signOut();
+              }}
             >
-              Login
+              {" "}
+              Chrono reads
             </button>
+            <div className="flex gap-14
+            ">
+              <Link href="/">How it works</Link>
+              <Link href="/">testimonails</Link>
+              {/* <Link href="/">about</Link> */}
+              <Link href="/">contact</Link>
+              <button className=" " onClick={() => dispatch(toggleLogin())}>
+                Login
+              </button>
+            </div>
+            <button className="primary_btn" onClick={() => dispatch(toggleSignup())}>SignUp</button>
           </div>
         ) : (
           <div className="flex gap-3 md:gap-5">

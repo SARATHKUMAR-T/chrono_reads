@@ -1,4 +1,7 @@
 "use client";
+import Contact from "@components/Contact";
+import Hero from "@sections/Hero";
+import HowItWorks from "@sections/HowItWorks";
 import PasswordModal from "@components/PasswordModal";
 import SignupModal from "@components/SignupModal";
 import LoginModal from "@components/loginModal";
@@ -21,8 +24,10 @@ function LandingPage() {
   }
 
   return (
-    <div className="z-10 w-full mt-16 min-h-screen h-full text-black">
-      landingpage
+    <div className=" w-full  bg-white min-h-screen  h-full text-black">
+      <Hero />
+      <HowItWorks />
+      <Contact />
     </div>
   );
 }

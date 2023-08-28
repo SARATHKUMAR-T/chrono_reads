@@ -35,7 +35,7 @@ function PromptCard({ post, handleTagClick, handleEdit, handleDelete }) {
           </div>
         </div>
 
-        <div className="copy_btn" onClick={handleCopy}>
+        {/* <div className="copy_btn" onClick={handleCopy}>
           <Image
             src={
               copied === post.prompt
@@ -46,7 +46,7 @@ function PromptCard({ post, handleTagClick, handleEdit, handleDelete }) {
             height={12}
             alt="copy"
           />
-        </div>
+        </div> */}
       </div>
       <div className="flex flex-col">
         <h3 className="font-bold capitalize orange_gradient text-center mt-1">

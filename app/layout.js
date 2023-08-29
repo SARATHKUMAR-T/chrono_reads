@@ -8,11 +8,6 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Toaster } from "react-hot-toast";
 import { Provider } from "react-redux";
 
-export const metadata = {
-  title: "Chorono Reads",
-  description: "Your book app",
-};
-
 const queryClient = new QueryClient();
 
 export default function RootLayout({ children }) {

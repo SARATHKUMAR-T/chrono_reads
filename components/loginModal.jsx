@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleForgot, toggleLogin, toggleSignup } from "@redux/UserForm";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { setUser } from "@redux/UserSlice";
 import { useState } from "react";
 import Loader from "./Loader";
 
@@ -45,7 +44,7 @@ function LoginModal() {
       toast.success("Logged in Successfully");
       setIsLoading(false);
       dispatch(toggleLogin());
-      router.replace("/post");
+      router.push("/post");
     } catch (error) {
       console.log(error);
     }

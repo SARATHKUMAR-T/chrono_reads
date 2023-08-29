@@ -85,7 +85,7 @@ function Nav() {
             <button
               className="p-4 font-marienda text-xl font-bold text-teal-500 "
               onClick={() => {
-                router.push("/");
+                router.replace("/");
                 signOut();
               }}
             >
@@ -101,8 +101,8 @@ function Nav() {
               </Link>
               <button
                 onClick={() => {
-                  router.push("/");
                   signOut();
+                  router.replace("/");
                 }}
               >
                 Sign out

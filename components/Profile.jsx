@@ -1,7 +1,7 @@
 import PromptCard from "./PromptCard";
 function Profile({ name, desc, data, handleEdit, handleDelete }) {
   return (
-    <section className="w-full pt-16 ">
+    <section className="w-full px-2 sm:px-12 pt-16 bg-slate-200 min-h-screen ">
       <h1 className="head_text text-left">
         <span className="blue_gradient">{name} profile</span>
       </h1>

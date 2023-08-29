@@ -8,10 +8,12 @@ import { toggleForgot, toggleLogin, toggleSignup } from "@redux/UserForm";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { setUser } from "@redux/UserSlice";
+import { useState } from "react";
+import Loader from "./Loader";
 
 function LoginModal() {
   const router = useRouter();
-  const isLoading = false;
+  const [isLoading, setIsLoading] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -28,6 +30,7 @@ function LoginModal() {
     // mutate(data);
 
     try {
+      setIsLoading(true);
       const res = await signIn("credentials", {
         ...data,
         redirect: false,
@@ -36,9 +39,11 @@ function LoginModal() {
 
       if (res.error) {
         toast.error("Invalid Credentials");
+        setIsLoading(false);
         return;
       }
       toast.success("Logged in Successfully");
+      setIsLoading(false);
       dispatch(toggleLogin());
       router.replace("/post");
     } catch (error) {
@@ -183,6 +188,11 @@ function LoginModal() {
               >
                 {isLoading ? "Loading..." : " Login to your account"}
               </button>
+              {isLoading && (
+                <div className="flex justify-center ">
+                  <Loader />
+                </div>
+              )}
             </form>
             <div className="mt-3 flex justify-between">
               <div className="flex items-start"></div>

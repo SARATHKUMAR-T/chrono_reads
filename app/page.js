@@ -24,7 +24,7 @@ function LandingPage() {
   }
 
   return (
-    <div className=" w-full  bg-white min-h-screen  h-full text-black">
+    <div className=" w-full  bg-white min-h-screen  h-full text-black overflow-hidden">
       <Hero />
       <HowItWorks />
       <Contact />

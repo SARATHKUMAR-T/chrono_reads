@@ -2,7 +2,7 @@ import { dbConnection } from "@Db/dbConnection";
 import User from "@models/User";
 import bcrypt from "bcryptjs";
 import { NextResponse } from "next/server";
-import jwt from "jsonwebtoken"
+import jwt from "jsonwebtoken";
 
 export async function POST(req) {
   try {
@@ -14,17 +14,16 @@ export async function POST(req) {
         { message: "user already exisists" },
         { status: 400 }
       );
-    } else {
-      const hashedPassword = await bcrypt.hash(user.password, 10);
-      await User.create({ ...user, password: hashedPassword });
-      const token = jwt.sign({ id: userExsists._id }, process.env.SECRET_KEY);
-
-      return NextResponse.json(
-        { message: "user created successfully" },
-        { status: 201 },
-        { token }
-      );
     }
+    const hashedPassword = await bcrypt.hash(user.password, 10);
+    const newUser = await User.create({ ...user, password: hashedPassword });
+    const token = jwt.sign({ id: newUser._id }, process.env.SECRET_KEY);
+
+    return NextResponse.json(
+      { message: "user created successfully" },
+      { status: 201 },
+      { token }
+    );
   } catch (error) {
     console.error(error);
     return NextResponse.json(

@@ -25,9 +25,9 @@ export const book2 = [
 ];
 
 export const startingFeatures = [
-  "Find a world that suits you and you want to enter",
-  "Enter the world by reading basmalah to be safe",
-  "No need to beat around the bush, just stay on the gas and have fun",
+  "Login with your account into chrono reads",
+  "Read other people posts and get inspiration",
+  "Create a new post and inspire people",
 ];
 
 export const socials = [

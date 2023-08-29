@@ -6,6 +6,7 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { useDispatch } from "react-redux";
+import Loader from "./Loader";
 
 function SignupModal() {
   const dispatch = useDispatch();
@@ -26,10 +27,13 @@ function SignupModal() {
 
   function handleSuccess(responseData) {
     toast.success(responseData.data.message);
+    setTimeout(() => {
+      toast.success("please login to continue");
+    }, 2000);
     localStorage.setItem("token", responseData.data.token);
-    dispatch(setUser(responseData.data.user));
     dispatch(toggleSignup());
     reset();
+    dispatch(toggleLogin());
   }
 
   function handleError(errorData) {
@@ -170,6 +174,11 @@ function SignupModal() {
               >
                 {isLoading ? "Creating Account..." : "Sign Up"}
               </button>
+              {isLoading && (
+                <div className="flex justify-center ">
+                  <Loader />
+                </div>
+              )}
             </form>
             <div className="mt-4 text-sm font-medium ">
               Already Have An Account?{" "}

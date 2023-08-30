@@ -6,18 +6,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { navVariants } from "../utils/motion";
 import { motion } from "framer-motion";
 import menu from "../public/Assets/icons/menu.svg";
 import { Link as Scroll } from "react-scroll";
 
 function Nav() {
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
-  // const validUser = useSelector(state => state.user.user);
-  // console.log(validUser);
   const { data: session } = useSession();
-  console.log(session);
   const router = useRouter();
   const [toggleDropdown, setToggleDropdown] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);

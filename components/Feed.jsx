@@ -8,7 +8,7 @@ import { getPosts } from "@sevices/posts";
 
 const PromptCardList = ({ data, handleTagClick }) => {
   return (
-    <div className="mt-16 prompt_layout">
+    <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 gap-x-6 md:gap-x-0 gap-y-6 justify-items-center  w-full">
       {data?.map(post => (
         <PromptCard key={post._id} post={post} handleClick={handleTagClick} />
       ))}
@@ -36,7 +36,6 @@ function Feed() {
     queryKey: ["posts"],
     queryFn: getPosts,
   });
-  console.log(data?.data);
 
   const newposts = data?.data;
 
@@ -80,7 +79,10 @@ function Feed() {
 
   return (
     <section className="feed ">
-      <form className="relative w-full flex-center" onSubmit={handleForm}>
+      <form
+        className="relative max-w-xl mx-auto w-full flex-center"
+        onSubmit={handleForm}
+      >
         <input
           type="text"
           value={searchText}

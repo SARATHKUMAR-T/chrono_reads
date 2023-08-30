@@ -3,11 +3,13 @@
 import { useState, useEffect } from "react";
 import PromptCard from "./PromptCard";
 import Loader from "./Loader";
+import { useQuery } from "@tanstack/react-query";
+import { getPosts } from "@sevices/posts";
 
 const PromptCardList = ({ data, handleTagClick }) => {
   return (
     <div className="mt-16 prompt_layout">
-      {data.map(post => (
+      {data?.map(post => (
         <PromptCard key={post._id} post={post} handleClick={handleTagClick} />
       ))}
     </div>
@@ -22,18 +24,27 @@ function Feed() {
   const [searchTimeout, setSearchTimeout] = useState(null);
   const [searchedResults, setSearchedResults] = useState([]);
 
-  useEffect(() => {
-    const fetchPosts = async () => {
-      const response = await fetch("/api/post");
-      const data = await response.json();
-      setAllPosts(data);
-    };
-    fetchPosts();
-  }, []);
+  // useEffect(() => {
+  //   const fetchPosts = async () => {
+  //     const response = await fetch("/api/post");
+  //     const data = await response.json();
+  //     setAllPosts(data);
+  //   };
+  //   fetchPosts();
+  // }, []);
+  const { data, isLoading } = useQuery({
+    queryKey: ["posts"],
+    queryFn: getPosts,
+  });
+  console.log(data?.data);
+
+  const newposts = data?.data;
+
+  // const allPosts = data;
 
   const filterPrompts = searchtext => {
-    const regex = new RegExp(searchtext, "i"); 
-    return allPosts.filter(
+    const regex = new RegExp(searchtext, "i");
+    return newposts?.filter(
       item =>
         regex.test(item.creator.name) ||
         regex.test(item.tag) ||
@@ -88,7 +99,7 @@ function Feed() {
         />
       ) : (
         <>
-          <PromptCardList data={allPosts} handleTagClick={handleTagClick} />
+          <PromptCardList data={newposts} handleTagClick={handleTagClick} />
         </>
       )}
     </section>

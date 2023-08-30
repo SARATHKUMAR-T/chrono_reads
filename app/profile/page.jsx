@@ -6,11 +6,14 @@ import { authMiddleware } from "../../authmiddleware";
 
 import Profile from "@components/Profile";
 import ProtectedPageWrapper from "@components/ProtectedPageWrapper";
+import { useQueryClient } from "@tanstack/react-query";
+import { toast } from "react-hot-toast";
 
 export function MyProfile() {
   const { data: session } = useSession();
   const [posts, setPosts] = useState([]);
   const router = useRouter();
+  const queryClient = useQueryClient();
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -32,7 +35,9 @@ export function MyProfile() {
         await fetch(`/api/post/${post._id.toString()}`, {
           method: "DELETE",
         });
+        queryClient.invalidateQueries({ queryKey: ["posts"] });
         const filteredPosts = posts.filter(p => p._id !== post._id);
+        toast.success("Post Successfully Deleted");
         setPosts(filteredPosts);
       } catch (error) {
         console.log(error);

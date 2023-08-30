@@ -4,9 +4,11 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Form from "@components/Form";
 import { toast } from "react-hot-toast";
+import { useQueryClient } from "@tanstack/react-query";
 
 function CreatePost() {
   const [submitting, setSubmitting] = useState(false);
+  const queryClient = useQueryClient();
   const [post, setPost] = useState({
     bookName: "",
     authour: "",
@@ -30,6 +32,7 @@ function CreatePost() {
       });
       if (res.ok) {
         toast.success("Post Created Successfully");
+        queryClient.invalidateQueries({ queryKey: ["posts"] });
         router.push("/post");
       }
     } catch (error) {

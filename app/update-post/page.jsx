@@ -2,11 +2,14 @@
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Form from "@components/Form";
+import { useQueryClient } from "@tanstack/react-query";
+import { toast } from "react-hot-toast";
 
 function EditPrompt() {
   const [submitting, setSubmitting] = useState(false);
   const searchParams = useSearchParams();
   const postId = searchParams.get("id");
+  const queryClient = useQueryClient();
   const [post, setPost] = useState({
     post: "",
     bookName: "",
@@ -42,6 +45,8 @@ function EditPrompt() {
         }),
       });
       if (res.ok) {
+        toast.success("Post Updated Successfully");
+        queryClient.invalidateQueries({ queryKey: ["posts"] });
         router.push("/post");
       }
     } catch (error) {

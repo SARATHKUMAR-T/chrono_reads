@@ -4,7 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { FaQuoteLeft } from "react-icons/fa6";
 import sara from "../public/Assets/images/t2.jpg";
-import book from "../public/Assets/images/bookcover.jpg";
+import book from "../public/Assets/images/student.svg";
 import { TitleText, TypingText } from "@components/CustomTexts";
 import { fadeIn, planetVariants, staggerContainer } from "@utils/motion";
 import StartSteps from "@components/StartSteps";
@@ -40,12 +40,9 @@ const GetStarted = () => (
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.25 }}
-      className="flex flex-wrap flex-col md:flex-row gap-8 w-full mt-24 max-w-6xl mx-auto bg-slate-800"
+      className="flex flex-wrap flex-col md:flex-row gap-8 w-full mt-24 max-w-6xl mx-auto p-2 bg-slate-200 rounded-lg shadow-lg shadow-teal-500"
     >
-      <motion.div
-        variants={planetVariants("left")}
-        className="flex-1 bg-green-700"
-      >
+      <motion.div variants={planetVariants("left")} className="flex-1 ">
         <Image src={book} className="w-full h-full object-contain" alt="book" />
       </motion.div>
       <div className="flex-1 p-3 ">
@@ -53,8 +50,8 @@ const GetStarted = () => (
           variants={fadeIn("left", "tween", 0.2, 1)}
           className="flex-[0.75] flex justify-center flex-col  "
         >
-          <TypingText title="| How Chrono Reads Works" />
-          <TitleText title={<>Get Started with just few clicks</>} />
+          <TypingText title="| How Chrono Reads Works" textstyles="text-slate-700" />
+          <TitleText title={<>Get Started with just few clicks</>} textstyles="text-slate-800" />
           <div className="mt-[31px] flex flex-col max-w-[370px] gap-[24px]">
             {startingFeatures.map((feature, index) => (
               <StartSteps key={feature} text={feature} number={index + 1} />

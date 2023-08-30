@@ -29,8 +29,8 @@ function Hero() {
           variants={textVariant(1.1)}
           className="head_text teal_gradient z-10"
         >
-          Share and inspire <br />
-          people with chrono reads.
+          Share,inspire and Connect <br />
+          through Chrono Reads.
         </motion.h1>
         <motion.p variants={textVariant(1.3)} className="z-10 font-semibold">
           Your Literary Diary Online - It allows you to exchange thoughts
@@ -45,8 +45,8 @@ function Hero() {
           variants={textVariant(1.8)}
           className="font-bold z-10 text-lg"
         >
-          Join the community to find your next book to read
-          <br /> and inspire people to read.
+          Join our vibrant community to discover your next captivating read
+          <br /> and inspire others to explore the world of literature.
         </motion.p>
         <motion.div variants={textVariant(2)} className="z-10">
           <button

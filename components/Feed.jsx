@@ -21,7 +21,6 @@ function Feed() {
   const [searchText, setSearchText] = useState("");
   const [searchTimeout, setSearchTimeout] = useState(null);
   const [searchedResults, setSearchedResults] = useState([]);
-  console.log(allPosts);
 
   useEffect(() => {
     const fetchPosts = async () => {

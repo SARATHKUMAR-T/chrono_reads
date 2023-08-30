@@ -101,8 +101,10 @@ function Nav() {
               </Link>
               <button
                 onClick={() => {
-                  signOut();
-                  router.replace("/");
+                  router.push("/");
+                  setTimeout(() => {
+                    signOut();
+                  }, 1000);
                 }}
               >
                 Sign out
@@ -182,7 +184,10 @@ function Nav() {
                   type="button"
                   onClick={() => {
                     setToggleDropdown(false);
-                    signOut();
+                    setTimeout(() => {
+                      signOut();
+                    }, 1000);
+                    window.location.href = "/";
                   }}
                   className="mt-5 w-full black_btn"
                 >

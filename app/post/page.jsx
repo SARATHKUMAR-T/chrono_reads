@@ -1,3 +1,4 @@
+import { authMiddleware } from "@authmiddleware";
 import Feed from "@components/Feed";
 
 function Post() {
@@ -19,6 +20,11 @@ function Post() {
       {/* feed */}
     </section>
   );
+}
+
+export async function getServerSideProps(context) {
+  console.log("auth triggered");
+  return authMiddleware(context); // Apply the middleware to the page
 }
 
 export default Post;

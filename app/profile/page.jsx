@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { authMiddleware } from "../../authmiddleware";
 
 import Profile from "@components/Profile";
 
@@ -47,6 +48,11 @@ function MyProfile() {
       handleDelete={handleDelete}
     />
   );
+}
+
+export async function getServerSideProps(context) {
+  console.log("auth triggered");
+  return authMiddleware(context); // Apply the middleware to the page
 }
 
 export default MyProfile;

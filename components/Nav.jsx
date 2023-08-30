@@ -86,7 +86,9 @@ function Nav() {
               className="p-4 font-marienda text-xl font-bold text-teal-500 "
               onClick={() => {
                 router.replace("/");
-                signOut();
+                setTimeout(() => {
+                  signOut();
+                }, 1000);
               }}
             >
               {" "}

@@ -35,7 +35,6 @@ function LoginModal() {
         ...data,
         redirect: false,
       });
-      console.log(res);
 
       if (res.error) {
         toast.error("Invalid Credentials");

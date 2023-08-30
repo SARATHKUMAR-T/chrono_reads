@@ -5,6 +5,7 @@ import store from "@redux/store";
 import "@styles/globals.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import Image from "next/image";
 import { Toaster } from "react-hot-toast";
 import { Provider } from "react-redux";
 
@@ -20,6 +21,7 @@ export default function RootLayout({ children }) {
             <AuthProvider>
               <>
                 <Nav />
+
                 {children}
               </>
               <Toaster

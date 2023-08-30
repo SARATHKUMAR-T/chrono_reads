@@ -1,7 +1,8 @@
 import { authMiddleware } from "@authmiddleware";
 import Feed from "@components/Feed";
+import ProtectedPageWrapper from "@components/ProtectedPageWrapper";
 
-function Post() {
+export function Post() {
   return (
     <section className=" mt-0 py-2 sm:py-0 sm:mt-16 min-h-screen w-full flex-center flex-col px-12 bg-slate-200">
       <h1 className="head_text text-center">
@@ -22,9 +23,10 @@ function Post() {
   );
 }
 
-export async function getServerSideProps(context) {
-  console.log("auth triggered");
-  return authMiddleware(context); // Apply the middleware to the page
+export default function WrappedMyProfile() {
+  return (
+    <ProtectedPageWrapper>
+      <Post />
+    </ProtectedPageWrapper>
+  );
 }
-
-export default Post;

@@ -5,8 +5,9 @@ import { useRouter } from "next/navigation";
 import { authMiddleware } from "../../authmiddleware";
 
 import Profile from "@components/Profile";
+import ProtectedPageWrapper from "@components/ProtectedPageWrapper";
 
-function MyProfile() {
+export function MyProfile() {
   const { data: session } = useSession();
   const [posts, setPosts] = useState([]);
   const router = useRouter();
@@ -50,9 +51,10 @@ function MyProfile() {
   );
 }
 
-export async function getServerSideProps(context) {
-  console.log("auth triggered");
-  return authMiddleware(context); // Apply the middleware to the page
+export default function WrappedMyProfile() {
+  return (
+    <ProtectedPageWrapper>
+      <MyProfile />
+    </ProtectedPageWrapper>
+  );
 }
-
-export default MyProfile;

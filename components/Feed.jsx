@@ -6,9 +6,15 @@ import Loader from "./Loader";
 import { useQuery } from "@tanstack/react-query";
 import { getPosts } from "@sevices/posts";
 
-const PromptCardList = ({ data, handleTagClick }) => {
+const PromptCardList = ({ data, handleTagClick, isLoading }) => {
   return (
-    <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 gap-x-6 md:gap-x-0 gap-y-6 justify-items-center  w-full">
+    <div className="mt-16 grid grid-cols-1 pb-14 sm:grid-cols-2 gap-x-6 md:gap-x-0 gap-y-6 justify-items-center  w-full">
+      {isLoading && (
+        <div className="col-span-2 flex justify-center items-center">
+          <Loader />
+        </div>
+      )}
+
       {data?.map(post => (
         <PromptCard key={post._id} post={post} handleClick={handleTagClick} />
       ))}
@@ -101,7 +107,11 @@ function Feed() {
         />
       ) : (
         <>
-          <PromptCardList data={newposts} handleTagClick={handleTagClick} />
+          <PromptCardList
+            data={newposts}
+            handleTagClick={handleTagClick}
+            isLoading={isLoading}
+          />
         </>
       )}
     </section>

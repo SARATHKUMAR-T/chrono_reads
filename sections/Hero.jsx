@@ -27,7 +27,7 @@ function Hero() {
       >
         <motion.h1
           variants={textVariant(1.1)}
-          className="head_text teal_gradient z-10"
+          className="head_text teal_gradient pb-4 z-10"
         >
           Share,inspire and Connect <br />
           through Chrono Reads.
@@ -43,7 +43,7 @@ function Hero() {
         />
         <motion.p
           variants={textVariant(1.8)}
-          className="font-bold z-10 text-lg"
+          className="font-bold z-10  text-lg"
         >
           Join our vibrant community to discover your next captivating read
           <br /> and inspire others to explore the world of literature.

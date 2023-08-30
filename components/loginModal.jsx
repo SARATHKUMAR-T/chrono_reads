@@ -13,6 +13,7 @@ import Loader from "./Loader";
 function LoginModal() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
+  const [demo, setDemo] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -210,6 +211,34 @@ function LoginModal() {
               >
                 Create account
               </button>
+            </div>
+            <div>
+              <div className="flex justify-end">
+                <button
+                  onClick={() => setDemo(!demo)}
+                  className="text-blue-700 font-semibold underline underline-offset-1 text-sm mt-4 capitalize"
+                >
+                  are you looking for Demo Account?
+                </button>
+              </div>
+              {demo && (
+                <div className="mt-1 flex items-center justify-center p-2 flex-col">
+                  <p className="text-sm">
+                    Email:
+                    <span className="font-semibold text-base text-blue-700">
+                      {" "}
+                      demo1@email.com
+                    </span>
+                  </p>
+                  <p className="text-sm">
+                    Password:
+                    <span className="font-semibold text-base text-blue-700">
+                      {" "}
+                      demo1
+                    </span>
+                  </p>
+                </div>
+              )}
             </div>
           </div>
         </div>

@@ -29,7 +29,7 @@ function SignupModal() {
     toast.success(responseData.data.message);
     setTimeout(() => {
       toast.success("please login to continue");
-    }, 2000);
+    }, 1000);
     localStorage.setItem("token", responseData.data.token);
     dispatch(toggleSignup());
     reset();
